@@ -68,7 +68,7 @@ const ContactSection = () => {
       icon: <MapPin className="text-purple-400" size={24} />,
       label: "Location",
       value: "Gelugor, Penang, Malaysia",
-      href: "#"
+      href: "https://maps.google.com/?q=Gelugor,Penang,Malaysia"
     }
   ];
 
@@ -186,6 +186,8 @@ const ContactSection = () => {
                   <a
                     key={index}
                     href={info.href}
+                    target={info.label === "Location" ? "_blank" : undefined}
+                    rel={info.label === "Location" ? "noopener noreferrer" : undefined}
                     className="flex items-center space-x-4 p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:transform hover:scale-105 group"
                   >
                     <div className="p-3 bg-slate-700 rounded-lg group-hover:bg-teal-500/20 transition-colors duration-200">
@@ -205,13 +207,17 @@ const ContactSection = () => {
               <h3 className="text-2xl font-bold text-white mb-6">Connect With Me</h3>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="https://github.com/mziqreey"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:transform hover:scale-110 group"
                 >
                   <Github className="text-gray-400 group-hover:text-teal-400 transition-colors duration-200" size={24} />
                 </a>
                 <a
-                  href="#"
+                  href="https://linkedin.com/in/mziqreey"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:transform hover:scale-110 group"
                 >
                   <ExternalLink className="text-gray-400 group-hover:text-teal-400 transition-colors duration-200" size={24} />

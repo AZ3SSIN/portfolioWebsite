@@ -19,6 +19,15 @@ const Index = () => {
     setIsMenuOpen(false);
   };
 
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/Mohamad_Ziqreey_Resume.pdf';
+    link.download = 'Mohamad_Ziqreey_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'projects', 'skills', 'contact'];
@@ -78,7 +87,10 @@ const Index = () => {
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
-              <button className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-200 hover:scale-105">
+              <button 
+                onClick={handleResumeDownload}
+                className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-teal-500/25 transition-all duration-200 hover:scale-105"
+              >
                 <Download size={16} className="inline mr-2" />
                 Resume
               </button>
@@ -107,7 +119,10 @@ const Index = () => {
                   {item.label}
                 </button>
               ))}
-              <button className="w-full bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium mt-4">
+              <button 
+                onClick={handleResumeDownload}
+                className="w-full bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium mt-4"
+              >
                 <Download size={16} className="inline mr-2" />
                 Download Resume
               </button>
@@ -133,10 +148,10 @@ const Index = () => {
               © 2025 Mohamad Ziqreey Bin Rahmat. All rights reserved.
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+              <a href="https://github.com/mziqreey" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
                 <Github size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
+              <a href="mailto:mziqreey99@gmail.com" className="text-gray-400 hover:text-teal-400 transition-colors duration-200">
                 <Mail size={20} />
               </a>
             </div>
