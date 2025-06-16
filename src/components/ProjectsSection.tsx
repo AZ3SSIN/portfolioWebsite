@@ -9,7 +9,7 @@ const ProjectsSection = () => {
       year: "2025",
       status: "Completed",
       description:
-        "Full-stack real-time bus tracking system for USM campus with mobile app, live location visualization, ETA calculations, and admin dashboard.",
+        "Full-stack real-time bus tracking system for USM campus with mobile app, live location visualization, ETA calculations, optimal bus & route recommendations, arrival recording and admin dashboard.",
       techStack: [
         "React Native",
         "TypeScript",
@@ -21,7 +21,7 @@ const ProjectsSection = () => {
         "Real-time bus location tracking",
         "Optimal bus and route recommendation",
         "Crowd density voting system",
-        "Internal desgined ETA calculation logic",
+        "Internally designed ETA calculation logic",
       ],
       impact: "Reduced student waiting time, improved campus transportation",
       gradient: "from-teal-500 to-blue-600",
