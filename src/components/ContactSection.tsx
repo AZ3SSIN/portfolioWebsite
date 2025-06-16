@@ -1,23 +1,24 @@
-
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Github, ExternalLink } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useState } from "react";
+import { Mail, Phone, MapPin, Send, Github, ExternalLink } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -27,24 +28,24 @@ const ContactSection = () => {
 
     // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       toast({
         title: "Message Sent!",
         description: "Thank you for your message. I'll get back to you soon!",
       });
-      
+
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
     } catch (error) {
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
-        variant: "destructive"
+        variant: "destructive",
       });
     } finally {
       setIsSubmitting(false);
@@ -55,21 +56,21 @@ const ContactSection = () => {
     {
       icon: <Mail className="text-teal-400" size={24} />,
       label: "Email",
-      value: "mziqreey99@gmail.com",
-      href: "mailto:mziqreey99@gmail.com"
+      value: "ziqreeym99@student.usm.my",
+      href: "mailto:ziqreeym99@student.usm.my",
     },
     {
       icon: <Phone className="text-blue-400" size={24} />,
       label: "Phone",
       value: "+601112653466",
-      href: "tel:+601112653466"
+      href: "tel:+601112653466",
     },
     {
       icon: <MapPin className="text-purple-400" size={24} />,
       label: "Location",
       value: "Gelugor, Penang, Malaysia",
-      href: "https://maps.google.com/?q=Gelugor,Penang,Malaysia"
-    }
+      href: "https://maps.google.com/?q=Gelugor,Penang,Malaysia",
+    },
   ];
 
   return (
@@ -81,20 +82,25 @@ const ContactSection = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-teal-400 to-blue-500 mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Ready to discuss your project or explore collaboration opportunities? 
-            I'd love to hear from you!
+            Ready to discuss your project or explore collaboration
+            opportunities? I'd love to hear from you!
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700">
-            <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
-            
+            <h3 className="text-2xl font-bold text-white mb-6">
+              Send a Message
+            </h3>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Name *
                   </label>
                   <input
@@ -109,7 +115,10 @@ const ContactSection = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Email *
                   </label>
                   <input
@@ -126,7 +135,10 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
                   Subject *
                 </label>
                 <input
@@ -142,7 +154,10 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
                   Message *
                 </label>
                 <textarea
@@ -180,21 +195,29 @@ const ContactSection = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Contact Information
+              </h3>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <a
                     key={index}
                     href={info.href}
                     target={info.label === "Location" ? "_blank" : undefined}
-                    rel={info.label === "Location" ? "noopener noreferrer" : undefined}
+                    rel={
+                      info.label === "Location"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                     className="flex items-center space-x-4 p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:transform hover:scale-105 group"
                   >
                     <div className="p-3 bg-slate-700 rounded-lg group-hover:bg-teal-500/20 transition-colors duration-200">
                       {info.icon}
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400 font-medium">{info.label}</p>
+                      <p className="text-sm text-gray-400 font-medium">
+                        {info.label}
+                      </p>
                       <p className="text-white font-semibold">{info.value}</p>
                     </div>
                   </a>
@@ -204,33 +227,44 @@ const ContactSection = () => {
 
             {/* Social Links */}
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">Connect With Me</h3>
+              <h3 className="text-2xl font-bold text-white mb-6">
+                Connect With Me
+              </h3>
               <div className="flex space-x-4">
                 <a
-                  href="https://github.com/mziqreey"
+                  href="https://github.com/AZ3SSIN"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:transform hover:scale-110 group"
                 >
-                  <Github className="text-gray-400 group-hover:text-teal-400 transition-colors duration-200" size={24} />
+                  <Github
+                    className="text-gray-400 group-hover:text-teal-400 transition-colors duration-200"
+                    size={24}
+                  />
                 </a>
                 <a
-                  href="https://linkedin.com/in/mziqreey"
+                  href="https://www.linkedin.com/in/mohamad-ziqreey-b750a3188/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700 hover:border-teal-500/50 transition-all duration-300 hover:transform hover:scale-110 group"
                 >
-                  <ExternalLink className="text-gray-400 group-hover:text-teal-400 transition-colors duration-200" size={24} />
+                  <ExternalLink
+                    className="text-gray-400 group-hover:text-teal-400 transition-colors duration-200"
+                    size={24}
+                  />
                 </a>
               </div>
             </div>
 
             {/* Quick Response Promise */}
             <div className="bg-gradient-to-r from-teal-500/10 to-blue-500/10 border border-teal-500/20 p-6 rounded-xl">
-              <h4 className="text-lg font-semibold text-white mb-2">Quick Response Guarantee</h4>
+              <h4 className="text-lg font-semibold text-white mb-2">
+                Quick Response Guarantee
+              </h4>
               <p className="text-gray-300 text-sm leading-relaxed">
-                I typically respond to all inquiries within 24 hours. For urgent matters, 
-                feel free to call me directly at the number provided above.
+                I typically respond to all inquiries within 24 hours. For urgent
+                matters, feel free to call me directly at the number provided
+                above.
               </p>
             </div>
           </div>

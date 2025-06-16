@@ -1,5 +1,11 @@
-
-import { Code, Database, Globe, Smartphone, Settings, Users } from 'lucide-react';
+import {
+  Code,
+  Database,
+  Globe,
+  Smartphone,
+  Settings,
+  Users,
+} from "lucide-react";
 
 const SkillsSection = () => {
   const skillCategories = [
@@ -11,8 +17,7 @@ const SkillsSection = () => {
         { name: "TypeScript", level: 85 },
         { name: "HTML/CSS", level: 95 },
         { name: "JavaScript", level: 90 },
-        { name: "Tailwind CSS", level: 85 }
-      ]
+      ],
     },
     {
       icon: <Database className="text-blue-400" size={24} />,
@@ -22,8 +27,8 @@ const SkillsSection = () => {
         { name: "Express.js", level: 80 },
         { name: "MongoDB", level: 75 },
         { name: "Firestore", level: 85 },
-        { name: "PHP", level: 70 }
-      ]
+        { name: "PHP", level: 70 },
+      ],
     },
     {
       icon: <Smartphone className="text-purple-400" size={24} />,
@@ -31,20 +36,18 @@ const SkillsSection = () => {
       skills: [
         { name: "React Native", level: 85 },
         { name: "Mobile UI/UX", level: 80 },
-        { name: "Cross-platform", level: 85 },
-        { name: "Native APIs", level: 75 }
-      ]
+        { name: "Native APIs", level: 75 },
+      ],
     },
     {
       icon: <Settings className="text-green-400" size={24} />,
       title: "Tools & APIs",
       skills: [
         { name: "Google Maps API", level: 90 },
-        { name: "Google Places API", level: 85 },
         { name: "Git/GitHub", level: 90 },
-        { name: "RapidMiner", level: 75 },
-        { name: "Firebase", level: 85 }
-      ]
+        { name: "RapidMiner", level: 55 },
+        { name: "Firebase", level: 85 },
+      ],
     },
     {
       icon: <Code className="text-orange-400" size={24} />,
@@ -53,8 +56,8 @@ const SkillsSection = () => {
         { name: "JavaScript", level: 90 },
         { name: "TypeScript", level: 85 },
         { name: "C++", level: 75 },
-        { name: "PHP", level: 70 }
-      ]
+        { name: "PHP", level: 70 },
+      ],
     },
     {
       icon: <Users className="text-pink-400" size={24} />,
@@ -63,9 +66,9 @@ const SkillsSection = () => {
         { name: "Team Collaboration", level: 95 },
         { name: "Project Management", level: 85 },
         { name: "Problem Solving", level: 90 },
-        { name: "Communication", level: 90 }
-      ]
-    }
+        { name: "Communication", level: 90 },
+      ],
+    },
   ];
 
   return (
@@ -77,7 +80,8 @@ const SkillsSection = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-teal-400 to-blue-500 mx-auto rounded-full mb-6"></div>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            A comprehensive overview of my technical skills and proficiency levels across different domains.
+            A comprehensive overview of my technical skills and proficiency
+            levels across different domains.
           </p>
         </div>
 
@@ -89,15 +93,21 @@ const SkillsSection = () => {
             >
               <div className="flex items-center space-x-3 mb-6">
                 {category.icon}
-                <h3 className="text-xl font-semibold text-white">{category.title}</h3>
+                <h3 className="text-xl font-semibold text-white">
+                  {category.title}
+                </h3>
               </div>
 
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex}>
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-300 text-sm font-medium">{skill.name}</span>
-                      <span className="text-teal-400 text-sm font-medium">{skill.level}%</span>
+                      <span className="text-gray-300 text-sm font-medium">
+                        {skill.name}
+                      </span>
+                      <span className="text-teal-400 text-sm font-medium">
+                        {skill.level}%
+                      </span>
                     </div>
                     <div className="w-full bg-slate-700 rounded-full h-2">
                       <div
@@ -115,7 +125,9 @@ const SkillsSection = () => {
         {/* Additional Skills Highlight */}
         <div className="mt-16 text-center">
           <div className="bg-slate-800/80 backdrop-blur-sm p-8 rounded-2xl border border-slate-700">
-            <h3 className="text-2xl font-bold text-white mb-4">Specializations</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Specializations
+            </h3>
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 "Real-time Systems",
@@ -125,7 +137,7 @@ const SkillsSection = () => {
                 "User Experience Design",
                 "Team Leadership",
                 "Agile Development",
-                "Data Analysis"
+                "Data Analysis",
               ].map((specialization, index) => (
                 <span
                   key={index}
