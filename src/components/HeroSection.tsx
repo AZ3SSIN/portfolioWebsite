@@ -4,6 +4,7 @@ import { ArrowDown, Mail, Phone, MapPin } from 'lucide-react';
 
 const HeroSection = () => {
   const [typedText, setTypedText] = useState('');
+  const [imageLoaded, setImageLoaded] = useState(false);
   const fullText = 'Full-Stack Developer & Software Engineer';
   
   useEffect(() => {
@@ -39,6 +40,30 @@ const HeroSection = () => {
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in">
+          {/* Profile Picture */}
+          <div className="mb-8 flex justify-center">
+            <div className="relative group">
+              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-teal-400/30 shadow-2xl shadow-teal-500/20 transition-all duration-500 group-hover:border-teal-400/60 group-hover:shadow-teal-500/40 group-hover:scale-105">
+                {/* Blur placeholder while loading */}
+                {!imageLoaded && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-800 animate-pulse rounded-full" />
+                )}
+                
+                <img
+                  src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=500&h=500&fit=crop&crop=face"
+                  alt="Mohamad Ziqreey Profile"
+                  className={`w-full h-full object-cover transition-all duration-700 ${
+                    imageLoaded ? 'opacity-100 blur-0' : 'opacity-0 blur-md'
+                  }`}
+                  onLoad={() => setImageLoaded(true)}
+                />
+              </div>
+              
+              {/* Subtle glow effect on hover */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl -z-10 transform group-hover:scale-110" />
+            </div>
+          </div>
+
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Mohamad Ziqreey
