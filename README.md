@@ -1,1 +1,1 @@
-I'll be honeset, this is my attempt on vibe coding. I swear the project is legit..
+I'll be honest, this was my attempt at vibe coding. I swear the other projects are legit
