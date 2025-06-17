@@ -1,16 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Phone, MapPin, Send, Github, ExternalLink } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "emailjs-com";
+
+const EMAIL_SERVICE_ID = "service_oi0flid";
+const TEMPLATE_ID = "template_8ts0gbl";
+const USER_ID = "jjD9uTie-ymPgyQsW";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
+    title: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const [isCooldown, setIsCooldown] = useState(false);
+
+  useEffect(() => {
+    const lastTime = localStorage.getItem("lastSubmittedAt");
+    if (lastTime) {
+      const diff = Date.now() - parseInt(lastTime, 10);
+      if (diff < 60000) {
+        setIsCooldown(true);
+        const timeout = setTimeout(() => setIsCooldown(false), 120000 - diff);
+        return () => clearTimeout(timeout);
+      }
+    }
+  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -24,11 +42,19 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isCooldown) {
+      toast({
+        title: "Too Many Requests",
+        description:
+          "Please wait at least 1 minute before sending another message.",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await emailjs.send(EMAIL_SERVICE_ID, TEMPLATE_ID, formData, USER_ID);
 
       toast({
         title: "Message Sent!",
@@ -38,10 +64,15 @@ const ContactSection = () => {
       setFormData({
         name: "",
         email: "",
-        subject: "",
+        title: "",
         message: "",
       });
+      localStorage.setItem("lastSubmittedAt", Date.now().toString());
+      setIsCooldown(true);
+
+      setTimeout(() => setIsCooldown(false), 60000);
     } catch (error) {
+      console.error("EmailJS Error:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again.",
@@ -136,17 +167,17 @@ const ContactSection = () => {
 
               <div>
                 <label
-                  htmlFor="subject"
+                  htmlFor="title"
                   className="block text-sm font-medium text-gray-300 mb-2"
                 >
                   Subject *
                 </label>
                 <input
                   type="text"
-                  id="subject"
-                  name="subject"
+                  id="title"
+                  name="title"
                   required
-                  value={formData.subject}
+                  value={formData.title}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent transition-all duration-200"
                   placeholder="What's this about?"
